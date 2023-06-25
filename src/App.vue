@@ -22,10 +22,17 @@ const añadir= function(){
 const borrarTarjeta=function(index){
   users.value.splice(index,1)
 }
+const duplicarTarjeta=function(name,email){
+  const newUser={
+    name:name,
+    email:email
+  }
+  users.value.unshift(newUser)
+}
 </script>
 
 <template>
-  <cardComponent v-for="(user,index) in users" :key="index" :name="user.name" :email="user.email" :index="index" @borrarTarjeta="borrarTarjeta" />
+  <cardComponent v-for="(user,index) in users" :key="index" :name="user.name" :email="user.email" :index="index" @borrarTarjeta="borrarTarjeta" @duplicarTarjeta="duplicarTarjeta" />
   <div>
     <label class="text-white "> ingrese su nombre</label>
     <br>

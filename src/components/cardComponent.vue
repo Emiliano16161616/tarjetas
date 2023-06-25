@@ -15,7 +15,10 @@ const props= defineProps({
 const borrarTarjeta=function(index){
     emit("borrarTarjeta",index)
 }
-const emit= defineEmits("borrarTarjeta")
+const emit= defineEmits("borrarTarjeta","duplicarTarjeta")
+const duplicarTarjeta=function(name,email){
+    emit("duplicarTarjeta",name,email)
+}
 </script>
 
 <template>
@@ -37,7 +40,7 @@ const emit= defineEmits("borrarTarjeta")
             </p>
         </div>
         <div>
-            <p class="bg-purple-600 p-[15px] ml-5 rounded-lg" >
+            <p class="bg-purple-600 p-[15px] ml-5 rounded-lg" @click="duplicarTarjeta(props.name,props.email)" >
                 add
             </p>
         </div>
